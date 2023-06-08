@@ -1,0 +1,31 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int subSeq(int arr[],int n,int ind,int s,int sum)
+{
+    if(ind==n)
+    {   
+        if(s==sum)
+        {
+         return 1;
+        }
+        return 0;
+    }
+    
+    s+=arr[ind];
+   int l=subSeq(arr,n,ind+1,s,sum);
+    s-=arr[ind];
+    int r=subSeq(arr,n,ind+1,s,sum);
+    return l+r;
+}
+
+int main()
+{
+    int arr[]={3,5,1,4};
+    int n;
+    int sum=4;
+    n=sizeof(arr)/sizeof(arr[0]);
+
+    cout<<subSeq(arr,n,0,0,sum);
+}
