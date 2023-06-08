@@ -1,0 +1,35 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void subSeq(int arr[],vector<int>v,int n,int ind)
+{
+    if(ind==n)
+    {
+        for(int i=0;i<v.size();i++)
+        {
+            cout<<v[i]<<" ";
+        }
+        if(v.size()==0)
+        {
+            cout<<"{}";                 //for empty subsequence
+        }
+        
+        cout<<endl;
+        return;
+    }
+    
+    v.push_back(arr[ind]);
+    subSeq(arr,v,n,ind+1);              //pick element
+    v.pop_back();
+    subSeq(arr,v,n,ind+1);               //dont pick element
+}
+
+int main()
+{
+    int arr[]={3,5,7};
+    int n;
+    n=sizeof(arr)/sizeof(arr[0]);
+    vector<int>v;
+    subSeq(arr,v,n,0);
+}
