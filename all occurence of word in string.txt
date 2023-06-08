@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void check(string s,string word,int index)
+{
+    index=s.find(word,index+1);
+    if(index==-1)
+    {
+        cout<<"not found"<<endl;
+        return;
+    }
+    else{
+        cout<<index<<endl;
+        check(s,word,index+1);
+    }
+}
+
+int main()
+{
+    string s="hello how are you? I am good what about you?same as you";
+    string word;
+    cin>>word; 
+    check(s,word,-1);
+    
+    
+  }

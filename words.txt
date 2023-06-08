@@ -1,0 +1,33 @@
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin>>n;
+    vector<string>v;
+    
+    while(n!=0)
+    {   
+        
+        string str;
+        cin>>str;
+        if(str.size()>10)
+        {   
+            string str1;
+            string num=to_string(str.size()-2);
+            str1=str[0]+num+str[str.size()-1];
+            v.push_back(str1);
+         }
+         else{
+             v.push_back(str);
+         }
+        n--;
+    }
+    for(int i=0;i<v.size();i++)
+    {
+        cout<<v[i]<<endl;
+    }
+}
