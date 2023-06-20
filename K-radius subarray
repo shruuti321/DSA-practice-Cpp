@@ -1,0 +1,41 @@
+
+#include <bits/stdc++.h>
+
+using namespace std;
+vector<int> getAverages(vector<int>& nums, int k) {
+        vector<int>v;
+        int sum=0;
+        int avg;
+        for(int i=0;i<k;i++)
+        {
+            v.push_back(-1);
+        }
+        for(int i=k;i<nums.size()-k;i++)
+        {
+            int sum=0;
+            for(int j=0;j<=k;j++)
+            {
+                sum+=nums[i-j]+nums[i+j];
+            }
+            sum=sum-nums[i];
+            avg=sum/(2*k+1);
+            v.push_back(avg);
+        }
+        for(int i=nums.size()-k;i<nums.size();i++)
+        {
+            v.push_back(-1);
+        }
+        return v;
+    }
+
+int main()
+{   
+    //vector<int>nums={7,4,3,9,1,8,5,2,6};
+    
+    vector<int>ans;
+    ans=getAverages(nums,3);
+    for(int i=0;i<ans.size();i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+}
