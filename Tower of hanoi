@@ -1,0 +1,18 @@
+void hanoi(int n,vector<vector<int>>&v,int a,int b,int c)            // a=from_rod,b=aux rod,c=to_rod
+{
+    if(n==0)
+    {
+        return;
+    }
+    hanoi(n-1,v,a,c,b);              // a to b using c
+    v.push_back({a,c});
+    hanoi(n-1,v,b,a,c);              //b to c using a
+}
+
+vector<vector<int>> towerOfHanoi(int n)
+{
+    //    Write your code here
+    vector<vector<int>>v;
+    hanoi(n,v,1,2,3);
+    return v;
+}
