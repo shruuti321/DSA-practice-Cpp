@@ -1,0 +1,16 @@
+unordered_set<int> hash;
+    /* Pick elements one by one */
+    struct Node* current = head;
+    struct Node* prev = NULL;
+    while (current != NULL) {
+    	// If the current value is already visited
+        if (hash.find(current->val) != hash.end()) {
+            prev->next = current->next;
+            delete (current);
+        }
+        // If the value is not present in hash
+        else {
+            hash.insert(current->val);
+            prev = current;
+        }
+        current = prev->next;
