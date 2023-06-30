@@ -1,0 +1,32 @@
+
+Node *lastAppearance(Node *head){
+    // Write your code here.
+	if(head==NULL)
+	{
+		return NULL;
+	}
+	set<int>s;
+	Node* temp=head;
+	s.insert(temp->data);
+	while(temp->next!=NULL)
+	{	
+		if(s.find(temp->next->data)!=s.end())
+		{	
+			Node*temp1=temp;
+			while(s.find(temp1->next->data)!=s.end())
+			{
+				temp1=temp1->next;
+				if(temp1->next==NULL)
+				{
+					 temp->next=NULL;
+					 return head;
+				}
+			}
+			temp->next=temp1->next;
+                } else {
+                  s.insert(temp->next->data);
+                };
+                temp=temp->next;
+	}
+	return head;
+}
