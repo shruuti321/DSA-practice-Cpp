@@ -1,0 +1,29 @@
+#include <bits/stdc++.h> 
+int oneIteration(vector<int> A)
+{
+    // Write your code here. 
+    int maxi,smaxi;
+    if(A[0]>A[1])
+    {
+         maxi=A[0];
+         smaxi=A[1];
+    }
+    else{
+        
+        maxi=A[1];
+        smaxi=A[0];
+    }
+    for(int i=2;i<A.size();i++)
+    {
+        if(A[i]>maxi)
+        {   
+            smaxi=maxi;
+            maxi=A[i];
+        }
+        else if(A[i]>smaxi and A[i]!=maxi){
+            smaxi=A[i];
+        }
+    }
+    return maxi+smaxi;
+
+}
