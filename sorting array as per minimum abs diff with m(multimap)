@@ -1,0 +1,17 @@
+#include <bits/stdc++.h> 
+vector<int> rearrangeArray(vector<int> &A, int m)
+{
+    //Write Your Code Here.
+    multimap<int,int>mpp;
+    for(int i=0;i<A.size();i++)
+    {
+        mpp.insert(make_pair(abs(A[i]-m),A[i]));
+    }
+    int i=0;
+    for(auto x:mpp)
+    {
+        A[i]=x.second;
+        i++;
+    }
+    return A;
+}
