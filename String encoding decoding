@@ -1,0 +1,45 @@
+
+#include <bits/stdc++.h> 
+using namespace std;
+string encode(string str) {
+	// Write your code here.
+	
+	for(int i=0;i<str.size();i++)
+	{
+		int ascii=str[i];
+		if(ascii==33)
+		{
+			ascii-=1;
+		}
+		else ascii-=3;
+		char ch=ascii;
+		str[i]=ch;
+	}
+	return str;
+}
+
+string decode(string str) {
+	// Write your code here.
+	
+	for(int i=0;i<str.length();i++)
+	{
+		int ascii=str[i];
+		//cout<<ascii<<"";
+		ascii+=3;
+		char ch=char(ascii);
+		if(ch!='#')str[i]=ch;
+		else str[i]='!';
+	
+	}
+	
+	return str;
+}
+
+int main()
+{
+    string str="I am Iron Man 3000";
+    str=decode(str);
+    cout<<str<<endl;
+    str=encode(str);
+    cout<<str;
+}
