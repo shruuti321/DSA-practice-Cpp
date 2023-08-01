@@ -1,0 +1,15 @@
+#include <bits/stdc++.h> 
+string convertString(string str) 
+{
+	// WRITE YOUR CODE HERE
+	string st="";
+	st+=char(toupper(str[0]));
+	for(int i=1;i<str.length();i++)
+	{
+		if(str[i-1]==' ')
+
+		st+=char(toupper(str[i]));
+		else st+=str[i];
+	}
+	return st;
+}
