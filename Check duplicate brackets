@@ -1,0 +1,25 @@
+#include <bits/stdc++.h> 
+bool duplicateParanthesis(string &expr)
+{
+    // Write your code here
+    stack<char>st;
+    for(int i=0;i<expr.length();i++)
+    {
+        if(expr[i]!=')')
+        {
+            st.push(expr[i]);
+        }
+        else if(expr[i]==')')
+        {   
+            int cnt=0;
+            while(st.top()!='(')
+           { 
+               st.pop();
+            cnt++;
+           }
+           st.pop();
+           if(cnt<1)return 1;
+        }
+    }
+    return 0;
+}
