@@ -1,0 +1,31 @@
+#include <bits/stdc++.h> 
+vector<string>ans;
+void wordFilter(vector<string> &words)
+{
+    //  Write your code here.
+    ans=words;
+
+}
+
+int find(string &prefix, string &suffix)
+{
+    //  Write your code here.
+    for(int i=ans.size()-1;i>=0;i--)
+    {
+        int n=ans[i].length();
+        int p=prefix.length();
+        int q=suffix.length();
+
+        if(n>=p && n>=q)
+        {
+            if(ans[i].substr(0,p).compare(prefix)==0 && ans[i].substr(n-q,n).compare(suffix)==0)
+            {
+                return i;
+            }
+        }
+    }
+    
+        return -1;
+
+
+}
