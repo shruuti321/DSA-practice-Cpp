@@ -1,0 +1,60 @@
+#include <bits/stdc++.h> 
+/****************************************************************
+
+    Following is the class structure of the Node class:
+
+        class Node
+        {
+        	public:
+	        int data;
+	        Node *next;
+	        Node(int data)
+	        {
+		        this->data = data;
+		        this->next = NULL;
+	        }
+        };
+
+*****************************************************************/
+
+Node* addNodes(Node* head, int n, int m) {
+    // Write your code here.
+	int nodes=0;
+	int sum=0;
+	int num=n;
+	Node* temp=head;
+	while(temp!=NULL)
+	{	
+	
+		if(nodes==m-1)
+		{
+			
+		while(num!=0 && temp->next!=NULL)
+		{	
+			temp=temp->next;
+			sum+=temp->data;
+			num--;
+		}
+		Node* newN=new Node(sum);
+			if(temp->next==NULL)
+			{
+				temp->next=newN;
+				newN->next=NULL;
+				return head;
+			}
+			newN->next=temp->next;
+		temp->next=newN;
+		temp=newN->next;
+		sum=0;
+		nodes=0;
+		num=n;
+		}
+		else{
+			nodes++;
+			temp=temp->next;
+		}
+		
+	}
+	return head;
+
+}
