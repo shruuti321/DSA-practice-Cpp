@@ -1,0 +1,23 @@
+void fun(int sx,int sy,int dx,int dy,int &f)
+{
+    if(sx==dx && sy==dy)
+    {
+        f=1;
+        return;
+    }
+    if(sx>dx ||sy>dy)return;
+
+    fun(sx+sy,sy,dx,dy,f);
+    fun(sx,sx+sy,dx,dy,f);   
+
+}
+
+
+bool reachDestination(int sx, int sy, int dx, int dy) {
+    // Write your code here
+    int f=0;
+   fun(sx,sy,dx,dy,f);
+   if(f==1)return true;
+   return false;
+
+}
