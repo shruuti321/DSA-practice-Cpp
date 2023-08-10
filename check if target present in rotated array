@@ -1,0 +1,61 @@
+class Solution {
+public:
+    void call(int low,int high,vector<int>nums,int &flag,int target)
+    {
+        while(low<=high)
+        {   
+           int mid=(low+high)/2;
+            if(nums[mid]==target)
+            {
+                flag=1;
+                break;
+            }
+            else if(target<nums[mid])
+            {
+                high=mid-1;
+            }
+            else low=mid+1;
+        }
+    }
+    bool search(vector<int>& nums, int target) {
+        int ind=-1;
+         int flag=0;
+        if(nums.size()==1)
+        {
+            if(nums[0]==target)return true;
+            else return false;
+        }
+    if(nums.size()==2)
+    {
+        if(nums[0]==target ||nums[1]==target)return true;
+        else return false;
+    }
+        for(int i=0;i<nums.size()-1;i++)
+        {
+            if(nums[i+1]<nums[i])
+            {
+                ind=i;
+                break;
+            }
+        }
+        if(ind==-1)
+        {
+            call(0,nums.size()-1,nums,flag,target);
+            if(flag==1)return true;else return false;
+        }
+   
+        if(target>nums[ind] || target<nums[ind+1])
+        {
+            return false;
+        }
+        else if(target>=nums[0]){
+            call(0,ind,nums,flag,target);
+        
+        }
+        else{
+            call(ind+1,nums.size()-1,nums,flag,target);
+        }
+        if(flag==1)return true;
+        else return false;
+    }
+};
