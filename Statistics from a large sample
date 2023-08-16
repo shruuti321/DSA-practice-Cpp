@@ -1,0 +1,50 @@
+class Solution {
+public:
+   
+vector<double> sampleStats(vector<int> &count)
+{
+    // Write your code here.
+   vector<double>ans;
+    vector<int>dup;
+    pair<int,int>py={0,0};
+    for(int i=0;i<count.size();i++)
+    {
+        if(count[i]!=0)
+        {   
+            for(int j=0;j<count[i];j++){
+                dup.push_back(i);
+            }
+            if(count[i]>py.second)
+            {
+                py.first=i;
+                py.second=count[i];
+            }
+
+        }
+    }
+    sort(dup.begin(),dup.end());
+
+    ans.push_back(dup[0]);
+    ans.push_back(dup[dup.size()-1]);
+    double sum=0;
+    for(int i=0;i<dup.size();i++)
+    {
+        sum+=dup[i];
+    }
+    // double mean=sum/dup.size();
+    ans.push_back(sum/dup.size());
+    if(dup.size()%2!=0)
+    {
+        ans.push_back(dup[dup.size()/2]);
+    }
+    else {
+        double av=dup[dup.size()/2]+dup[(dup.size()/2)-1];
+        ans.push_back(av/2);
+    }
+
+    ans.push_back(py.first);
+    return ans;
+    
+}
+
+};
