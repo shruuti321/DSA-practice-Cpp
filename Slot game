@@ -1,0 +1,43 @@
+#include <bits/stdc++.h> 
+bool check(string &original, string &guess,char x)
+{
+	for(int i=0;i<original.size();i++)
+	{
+		if(original[i]==x)
+		{
+			original[i]='#';
+			return true;
+		}
+		
+	}
+	return false;
+}
+
+int slotScore(string &original, string &guess)
+{
+	// Write your code here.
+	int n=original.size();
+	int count=0;
+	for(int i=0;i<n;i++)
+	{
+		if(original[i]==guess[i])
+		{
+			count+=2;
+			original[i]='#';
+			guess[i]='#';
+		}
+		
+	}
+	for(int i=0;i<n;i++)
+	{
+		if(guess[i]!='#')
+		{
+			if(check(original,guess,guess[i]))
+			{
+				guess[i]='#';
+			count++;
+			}
+		}
+	}
+	return count;
+}
