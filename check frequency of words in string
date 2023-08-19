@@ -1,0 +1,39 @@
+#include <bits/stdc++.h> 
+vector<int> getFrequency(string& str, vector<string>& words, int n) {
+	// Write your code here.
+	// vector<int>v;
+	
+	// for(int i=0;i<n;i++)
+	// {	
+	// 	int count=0;
+	// 	for(int j=0;j<str.size();j++)
+	// 	{
+	// 		if(str.substr(j,words[i].length()).compare(words[i])==0)
+	// 		{	
+	// 			count++;
+	// 		}
+	// 	}
+	// 	v.push_back(count);
+	// }
+	// return v;
+
+	vector<string>split;
+	istringstream iss(str);
+	for(string s; iss >> s;) {
+		split.push_back(s);
+	}
+	vector<int>ans;
+	for(auto x:words)
+	{
+		int count=0;
+		for(auto u:split)
+		{
+			if (u==x)
+			{
+				count++;
+			}
+		}
+		ans.push_back(count);
+	}
+	return ans;
+}
