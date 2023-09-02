@@ -1,0 +1,21 @@
+l=["#3A#5GER","#2CEF#4S"]
+d=[]
+
+
+for k in l:
+    i=0
+    new=""
+    while i<(len(k)):
+        if k[i]=='#':
+            n=int(k[i+1])
+            for j in range(0,n):
+                new+=k[i+2]
+            i+=3
+        else:
+            new+=k[i]
+            i+=1
+    d.append(new)
+print(d)
+
+
+OUTPUT=['AAAGGGGGER','CCEFSSSS']
