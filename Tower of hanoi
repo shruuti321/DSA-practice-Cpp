@@ -16,3 +16,31 @@ vector<vector<int>> towerOfHanoi(int n)
     hanoi(n,v,1,2,3);
     return v;
 }
+
+
+##################################################
+
+void solve(int s,int d,int h,int n,vector<vector<int>>&fin)
+{
+    vector<int>ans;
+    if(n==1)
+    {
+        ans.push_back(s);
+        ans.push_back(d);
+        fin.push_back(ans);
+        return;
+    }
+    solve(s,h,d,n-1,fin);
+    ans.push_back(s);
+    ans.push_back(d);
+    fin.push_back(ans);
+    solve(h,d,s,n-1,fin);
+}
+
+vector<vector<int>> towerOfHanoi(int n)
+{
+    //    Write your code here.
+    vector<vector<int>>fin;
+    solve(1,2,3,n,fin);
+    return fin;
+}
